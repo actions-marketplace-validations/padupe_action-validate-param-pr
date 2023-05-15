@@ -10623,7 +10623,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var core_1 = __nccwpck_require__(2186);
 var param = __importStar(__nccwpck_require__(5438));
-var service_1 = __nccwpck_require__(5083);
+var validateParamAtPullRequest_1 = __nccwpck_require__(7942);
 var gitHubToken = (0, core_1.getInput)('gitHubToken');
 function run() {
     var _a, _b;
@@ -10640,7 +10640,7 @@ function run() {
                     repoName = (_a = param.context.payload.repository) === null || _a === void 0 ? void 0 : _a.owner.login;
                     repoOwner = (_b = param.context.payload.repository) === null || _b === void 0 ? void 0 : _b.name;
                     (0, core_1.info)("repoName: ".concat(repoName, "\nrepoOwner: ").concat(repoOwner, "\npullRequest: ").concat(pullRequestNumber));
-                    return [4 /*yield*/, (0, service_1.validateParamAtPullRequest)(conditionalValue, pullRequestNumber, repoName, repoOwner, valueThatMustExist)];
+                    return [4 /*yield*/, (0, validateParamAtPullRequest_1.validateParamAtPullRequest)(conditionalValue, pullRequestNumber, repoName, repoOwner, valueThatMustExist)];
                 case 1:
                     _c.sent();
                     return [3 /*break*/, 3];
@@ -10744,7 +10744,7 @@ var GitHubRepository = /** @class */ (function () {
                         })];
                     case 1:
                         pullRequest = _a.sent();
-                        if (pullRequest.status !== 200) {
+                        if (!pullRequest) {
                             (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNumber));
                         }
                         return [2 /*return*/, pullRequest.data.body];
@@ -10811,9 +10811,7 @@ function gitHubService(conditionalValue, pullRequestNumber, repoName, repoOwner,
         var bodyPullRequest, validate;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    (0, core_1.info)('GitHub Service - INICIO');
-                    return [4 /*yield*/, gitHubRepository.getPullRequestNumber(pullRequestNumber, repoName, repoOwner)];
+                case 0: return [4 /*yield*/, gitHubRepository.getPullRequestNumber(pullRequestNumber, repoName, repoOwner)];
                 case 1:
                     bodyPullRequest = _a.sent();
                     validate = (0, validationIfConditionIsMet_1.validationIfConditionIsMet)(bodyPullRequest, conditionalValue, valueThatMustExist);
@@ -10829,32 +10827,6 @@ function gitHubService(conditionalValue, pullRequestNumber, repoName, repoOwner,
     });
 }
 exports.gitHubService = gitHubService;
-
-
-/***/ }),
-
-/***/ 5083:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(848), exports);
-__exportStar(__nccwpck_require__(7942), exports);
 
 
 /***/ }),

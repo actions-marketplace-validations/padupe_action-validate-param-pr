@@ -1,6 +1,6 @@
 import { getInput, info, setFailed } from '@actions/core'
 import * as param from '@actions/github'
-import { validateParamAtPullRequest } from './service'
+import { validateParamAtPullRequest } from './service/validateParamAtPullRequest'
 
 const gitHubToken = getInput('gitHubToken')
 
