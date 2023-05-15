@@ -10549,6 +10549,8 @@ function createOctokitClient(token) {
     var octokit = new core_1.Octokit({
         auth: token,
     });
+    console.log("Client");
+    console.log(octokit);
     return octokit;
 }
 exports.createOctokitClient = createOctokitClient;

@@ -5,5 +5,8 @@ export function createOctokitClient(token: string): Octokit {
     auth: token,
   })
 
+  console.log(`Client`)
+  console.log(octokit)
+
   return octokit
 }
