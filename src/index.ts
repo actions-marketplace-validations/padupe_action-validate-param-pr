@@ -1,4 +1,4 @@
-import { getInput, setFailed } from '@actions/core'
+import { getInput, info, setFailed } from '@actions/core'
 import * as param from '@actions/github'
 import { validateParamAtPullRequest } from './service'
 
@@ -12,6 +12,10 @@ async function run(): Promise<void> {
       const pullRequestNumber = Number(param.context.ref.split('/')[2])
       const repoName = param.context.payload.repository?.owner.login
       const repoOwner = param.context.payload.repository?.name
+
+      info(
+        `repoName: ${repoName}\nrepoOwner: ${repoOwner}\npullRequest: ${pullRequestNumber}`,
+      )
 
       await validateParamAtPullRequest(
         conditionalValue,
