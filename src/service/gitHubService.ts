@@ -11,7 +11,7 @@ export async function gitHubService(
   repoOwner: string,
   valueThatMustExist: string,
 ): Promise<any> {
-  console.log('GitHub Service - INICIO')
+  info('GitHub Service - INICIO')
 
   const bodyPullRequest = await gitHubRepository.getPullRequestNumber(
     pullRequestNumber,

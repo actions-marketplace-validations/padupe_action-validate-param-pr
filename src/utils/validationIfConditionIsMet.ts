@@ -1,4 +1,5 @@
 import { hasValue } from './hasValue'
+import { info } from '@actions/core'
 
 export function validationIfConditionIsMet(
   body: string,
@@ -8,8 +9,8 @@ export function validationIfConditionIsMet(
   const firstStep = hasValue(body, conditionalValue)
   const secondStep = hasValue(body, valueThatMustExist)
 
-  console.log(`VALIDATION - FIRST: ${firstStep}`)
-  console.log(`VALIDATION - SECOND: ${secondStep}`)
+  info(`VALIDATION - FIRST: ${firstStep}`)
+  info(`VALIDATION - SECOND: ${secondStep}`)
 
   let result: boolean
   result = false
@@ -22,6 +23,6 @@ export function validationIfConditionIsMet(
     result = false
   }
 
-  console.log('result ->', result)
+  info(`result -> ${result}`)
   return result
 }
