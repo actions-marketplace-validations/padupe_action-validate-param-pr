@@ -10625,6 +10625,7 @@ var core_1 = __nccwpck_require__(2186);
 var param = __importStar(__nccwpck_require__(5438));
 var validateParamAtPullRequest_1 = __nccwpck_require__(7942);
 var gitHubToken = (0, core_1.getInput)('gitHubToken');
+console.log(param);
 function run() {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function () {

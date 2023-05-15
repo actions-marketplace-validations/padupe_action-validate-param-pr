@@ -4,6 +4,8 @@ import { validateParamAtPullRequest } from './service/validateParamAtPullRequest
 
 const gitHubToken = getInput('gitHubToken')
 
+console.log(param)
+
 async function run(): Promise<void> {
   try {
     if (gitHubToken) {
