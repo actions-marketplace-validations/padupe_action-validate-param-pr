@@ -10751,7 +10751,8 @@ var GitHubRepository = /** @class */ (function () {
                         if (!pullRequest) {
                             (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNUmber));
                         }
-                        console.log(pullRequest.data);
+                        console.log('RESULTADO');
+                        console.log(pullRequest);
                         return [2 /*return*/, pullRequest.data.body];
                 }
             });
