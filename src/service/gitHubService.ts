@@ -1,6 +1,6 @@
 import { setFailed, setOutput } from '@actions/core'
-import { validationIfConditionIsMet } from '@utils/validationIfConditionIsMet'
-import { GitHubRepository } from 'repositories'
+import { validationIfConditionIsMet } from '../utils/validationIfConditionIsMet'
+import { GitHubRepository } from '../repositories/GitHubRepository'
 
 const gitHubRepository = new GitHubRepository()
 
