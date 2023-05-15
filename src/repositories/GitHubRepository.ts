@@ -16,9 +16,8 @@ export class GitHubRepository implements IGitHubRepository {
     repoName: string,
     repoOwner: string,
   ): Promise<object> {
-    console.log('GITHUB REPOSITORY - Cria comentário na PR')
     const comment = await this.repository.request(
-      `POST /repos/{owner}/{repo}/issues/{issue_number}/comments`,
+      'POST /repos/{owner}/{repo}/issues/{issue_number}/comments',
       {
         owner: repoOwner,
         repo: repoName,
@@ -35,26 +34,22 @@ export class GitHubRepository implements IGitHubRepository {
   }
 
   async getPullRequestNumber(
-    pullRequestNUmber: number,
+    pullRequestNumber: number,
     repoName: string,
     repoOwner: string,
   ): Promise<string> {
-    console.log('GITHUB REPOSITORY - Get content Pull Request')
     const pullRequest = await this.repository.request(
-      `GET /repos/{owner}/{repo}/pulls/{pull_number}`,
+      'GET /repos/{owner}/{repo}/pulls/{pull_number}',
       {
         owner: repoOwner,
         repo: repoName,
-        pull_number: pullRequestNUmber,
+        pull_number: pullRequestNumber,
       },
     )
 
     if (pullRequest.status !== 200) {
-      setFailed(`Error capturing Pull Request body ${pullRequestNUmber}`)
+      setFailed(`Error capturing Pull Request body ${pullRequestNumber}`)
     }
-
-    console.log('RESULTADO')
-    console.log(pullRequest)
 
     return pullRequest.data.body as string
   }

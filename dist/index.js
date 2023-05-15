@@ -10716,14 +10716,12 @@ var GitHubRepository = /** @class */ (function () {
             var comment;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log('GITHUB REPOSITORY - Cria comentário na PR');
-                        return [4 /*yield*/, this.repository.request("POST /repos/{owner}/{repo}/issues/{issue_number}/comments", {
-                                owner: repoOwner,
-                                repo: repoName,
-                                issue_number: pullRequestNumber,
-                                body: message,
-                            })];
+                    case 0: return [4 /*yield*/, this.repository.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+                            owner: repoOwner,
+                            repo: repoName,
+                            issue_number: pullRequestNumber,
+                            body: message,
+                        })];
                     case 1:
                         comment = _a.sent();
                         if (comment.status !== 201) {
@@ -10734,25 +10732,21 @@ var GitHubRepository = /** @class */ (function () {
             });
         });
     };
-    GitHubRepository.prototype.getPullRequestNumber = function (pullRequestNUmber, repoName, repoOwner) {
+    GitHubRepository.prototype.getPullRequestNumber = function (pullRequestNumber, repoName, repoOwner) {
         return __awaiter(this, void 0, void 0, function () {
             var pullRequest;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log('GITHUB REPOSITORY - Get content Pull Request');
-                        return [4 /*yield*/, this.repository.request("GET /repos/{owner}/{repo}/pulls/{pull_number}", {
-                                owner: repoOwner,
-                                repo: repoName,
-                                pull_number: pullRequestNUmber,
-                            })];
+                    case 0: return [4 /*yield*/, this.repository.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+                            owner: repoOwner,
+                            repo: repoName,
+                            pull_number: pullRequestNumber,
+                        })];
                     case 1:
                         pullRequest = _a.sent();
                         if (pullRequest.status !== 200) {
-                            (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNUmber));
+                            (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNumber));
                         }
-                        console.log('RESULTADO');
-                        console.log(pullRequest);
                         return [2 /*return*/, pullRequest.data.body];
                 }
             });
@@ -10954,8 +10948,6 @@ var core_1 = __nccwpck_require__(2186);
 function validationIfConditionIsMet(body, conditionalValue, valueThatMustExist) {
     var firstStep = (0, hasValue_1.hasValue)(body, conditionalValue);
     var secondStep = (0, hasValue_1.hasValue)(body, valueThatMustExist);
-    (0, core_1.info)("VALIDATION - FIRST: ".concat(firstStep));
-    (0, core_1.info)("VALIDATION - SECOND: ".concat(secondStep));
     var result;
     result = false;
     if (!firstStep) {

@@ -6,7 +6,7 @@ export interface IGitHubRepository {
     repoOwner: string,
   ) => Promise<object>
   getPullRequestNumber: (
-    pullRequestNUmber: number,
+    pullRequestNumber: number,
     repoName: string,
     repoOwner: string,
   ) => Promise<string>
