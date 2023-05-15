@@ -35,7 +35,7 @@ Por exemplo, uma indicação de desenvolvimento de uma nova funcionalidade reque
 
 1. Crie o diretório `.github/workflows` na "raiz" do seu projeto;
 
-2. Crie o arquivo `content-change-validation.yaml` com o conteúdo semelhante ao apresentado a seguir:
+2. Crie o arquivo `validate-param-pr.yaml` com o conteúdo semelhante ao apresentado a seguir:
 
 > OBSERVAÇÃO: Confira as orientações para uso da action "action-generate-token-github-app" clicando [aqui](https://github.com/padupe/action-generate-token-github-app/blob/master/docs/README.pt-BR.md#requisitos).
 
@@ -71,7 +71,7 @@ jobs:
 
 1. Crie o diretório `.github/workflows` na "raiz" do seu projeto;
 
-2. Crie o arquivo `content-change-validation.yaml` com o conteúdo semelhante ao apresentado a seguir:
+2. Crie o arquivo `validate-param-pr.yaml` com o conteúdo semelhante ao apresentado a seguir:
 
 ```yaml
 name: Validate Param at Pull Request
@@ -82,7 +82,7 @@ on:
       - main
 
 jobs:
-  content-change-validation:
+  validate-param-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Validate Param at Pull Request
