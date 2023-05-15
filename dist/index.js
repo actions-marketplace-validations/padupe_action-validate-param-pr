@@ -10639,6 +10639,7 @@ function run() {
                     pullRequestNumber = Number(param.context.ref.split('/')[2]);
                     repoName = (_a = param.context.payload.repository) === null || _a === void 0 ? void 0 : _a.owner.login;
                     repoOwner = (_b = param.context.payload.repository) === null || _b === void 0 ? void 0 : _b.name;
+                    (0, core_1.info)("repoName: ".concat(repoName, "\nrepoOwner: ").concat(repoOwner, "\npullRequest: ").concat(pullRequestNumber));
                     return [4 /*yield*/, (0, service_1.validateParamAtPullRequest)(conditionalValue, pullRequestNumber, repoName, repoOwner, valueThatMustExist)];
                 case 1:
                     _c.sent();
@@ -10715,12 +10716,14 @@ var GitHubRepository = /** @class */ (function () {
             var comment;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.repository.request("POST /repos/{owner}/{repo}/issues/{issue_number}/comments", {
-                            owner: repoOwner,
-                            repo: repoName,
-                            issue_number: pullRequestNumber,
-                            body: message,
-                        })];
+                    case 0:
+                        console.log('GITHUB REPOSITORY - Cria comentário na PR');
+                        return [4 /*yield*/, this.repository.request("POST /repos/{owner}/{repo}/issues/{issue_number}/comments", {
+                                owner: repoOwner,
+                                repo: repoName,
+                                issue_number: pullRequestNumber,
+                                body: message,
+                            })];
                     case 1:
                         comment = _a.sent();
                         if (comment.status !== 201) {
@@ -10736,16 +10739,19 @@ var GitHubRepository = /** @class */ (function () {
             var pullRequest;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.repository.request("GET /repos/{owner}/{repo}/pulls/{pull_number}", {
-                            owner: repoOwner,
-                            repo: repoName,
-                            pull_number: pullRequestNUmber,
-                        })];
+                    case 0:
+                        console.log('GITHUB REPOSITORY - Get content Pull Request');
+                        return [4 /*yield*/, this.repository.request("GET /repos/{owner}/{repo}/pulls/{pull_number}", {
+                                owner: repoOwner,
+                                repo: repoName,
+                                pull_number: pullRequestNUmber,
+                            })];
                     case 1:
                         pullRequest = _a.sent();
                         if (!pullRequest) {
                             (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNUmber));
                         }
+                        console.log(pullRequest.data.body);
                         return [2 /*return*/, pullRequest.data.body];
                 }
             });
@@ -10810,7 +10816,9 @@ function gitHubService(conditionalValue, pullRequestNumber, repoName, repoOwner,
         var bodyPullRequest, validate;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, gitHubRepository.getPullRequestNumber(pullRequestNumber, repoName, repoOwner)];
+                case 0:
+                    (0, core_1.info)('GitHub Service - INICIO');
+                    return [4 /*yield*/, gitHubRepository.getPullRequestNumber(pullRequestNumber, repoName, repoOwner)];
                 case 1:
                     bodyPullRequest = _a.sent();
                     validate = (0, validationIfConditionIsMet_1.validationIfConditionIsMet)(bodyPullRequest, conditionalValue, valueThatMustExist);
@@ -10941,9 +10949,12 @@ exports.hasValue = hasValue;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.validationIfConditionIsMet = void 0;
 var hasValue_1 = __nccwpck_require__(7673);
+var core_1 = __nccwpck_require__(2186);
 function validationIfConditionIsMet(body, conditionalValue, valueThatMustExist) {
     var firstStep = (0, hasValue_1.hasValue)(body, conditionalValue);
     var secondStep = (0, hasValue_1.hasValue)(body, valueThatMustExist);
+    (0, core_1.info)("VALIDATION - FIRST: ".concat(firstStep));
+    (0, core_1.info)("VALIDATION - SECOND: ".concat(secondStep));
     var result;
     result = false;
     if (!firstStep) {
@@ -10952,6 +10963,7 @@ function validationIfConditionIsMet(body, conditionalValue, valueThatMustExist) 
     if (firstStep && !secondStep) {
         result = false;
     }
+    (0, core_1.info)("result -> ".concat(result));
     return result;
 }
 exports.validationIfConditionIsMet = validationIfConditionIsMet;
