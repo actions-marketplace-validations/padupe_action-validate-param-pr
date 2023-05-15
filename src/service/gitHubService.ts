@@ -1,4 +1,4 @@
-import { setFailed, setOutput } from '@actions/core'
+import { info, setFailed, setOutput } from '@actions/core'
 import { validationIfConditionIsMet } from '../utils/validationIfConditionIsMet'
 import { GitHubRepository } from '../repositories/GitHubRepository'
 
@@ -11,6 +11,8 @@ export async function gitHubService(
   repoOwner: string,
   valueThatMustExist: string,
 ): Promise<any> {
+  console.log('GitHub Service - INICIO')
+
   const bodyPullRequest = await gitHubRepository.getPullRequestNumber(
     pullRequestNumber,
     repoName,

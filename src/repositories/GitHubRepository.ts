@@ -16,6 +16,7 @@ export class GitHubRepository implements IGitHubRepository {
     repoName: string,
     repoOwner: string,
   ): Promise<object> {
+    console.log('GITHUB REPOSITORY - Cria comentário na PR')
     const comment = await this.repository.request(
       `POST /repos/{owner}/{repo}/issues/{issue_number}/comments`,
       {
@@ -38,6 +39,7 @@ export class GitHubRepository implements IGitHubRepository {
     repoName: string,
     repoOwner: string,
   ): Promise<string> {
+    console.log('GITHUB REPOSITORY - Get content Pull Request')
     const pullRequest = await this.repository.request(
       `GET /repos/{owner}/{repo}/pulls/{pull_number}`,
       {
@@ -50,6 +52,8 @@ export class GitHubRepository implements IGitHubRepository {
     if (!pullRequest) {
       setFailed(`Error capturing Pull Request body ${pullRequestNUmber}`)
     }
+
+    console.log(pullRequest.data.body)
 
     return pullRequest.data.body as string
   }

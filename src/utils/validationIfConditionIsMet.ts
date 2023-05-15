@@ -8,6 +8,9 @@ export function validationIfConditionIsMet(
   const firstStep = hasValue(body, conditionalValue)
   const secondStep = hasValue(body, valueThatMustExist)
 
+  console.log(`VALIDATION - FIRST: ${firstStep}`)
+  console.log(`VALIDATION - SECOND: ${secondStep}`)
+
   let result: boolean
   result = false
 
@@ -19,5 +22,6 @@ export function validationIfConditionIsMet(
     result = false
   }
 
+  console.log('result ->', result)
   return result
 }
