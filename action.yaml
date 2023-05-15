@@ -1,0 +1,22 @@
+name: 'Validate Param at Pull Request'
+description: 'Action useful for validating the check-box in Pull Requests, or another strategy that conditions a certain action or scenario.'
+author: 'Paulo Eduardo Peixoto'
+branding:
+  color: 'yellow'
+  icon: 'search'
+inputs:
+  conditionalValue:
+    description: 'Value of the conditional that must be "fetched" by the action.'
+    required: true
+  valueThatMustExist:
+    description: 'Value or condition that must exist.'
+    required: true
+  gitHubToken:
+    description: 'Credential for use in interacting with the GitHub API.'
+    required: true
+outputs:
+  result:
+    description: 'Verification result (Bollean).'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
