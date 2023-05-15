@@ -10815,7 +10815,9 @@ function gitHubService(conditionalValue, pullRequestNumber, repoName, repoOwner,
                 case 0: return [4 /*yield*/, gitHubRepository.getPullRequestNumber(pullRequestNumber, repoName, repoOwner)];
                 case 1:
                     bodyPullRequest = _a.sent();
+                    console.log(bodyPullRequest);
                     validate = (0, validationIfConditionIsMet_1.validationIfConditionIsMet)(bodyPullRequest, conditionalValue, valueThatMustExist);
+                    console.log(validate);
                     if (!(validate === false)) return [3 /*break*/, 3];
                     return [4 /*yield*/, gitHubRepository.createCommentAtPR("The value ".concat(valueThatMustExist, " does not exist, as expected when we have ").concat(conditionalValue, "."), pullRequestNumber, repoName, repoOwner)];
                 case 2:

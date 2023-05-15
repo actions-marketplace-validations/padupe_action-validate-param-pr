@@ -17,11 +17,15 @@ export async function gitHubService(
     repoOwner,
   )
 
+  console.log(bodyPullRequest)
+
   const validate = validationIfConditionIsMet(
     bodyPullRequest,
     conditionalValue,
     valueThatMustExist,
   )
+
+  console.log(validate)
 
   if (validate === false) {
     await gitHubRepository.createCommentAtPR(
