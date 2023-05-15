@@ -73,7 +73,7 @@ jobs:
 
 1. Create directory `.github/worfklows` in the root of your project;
 
-2. Create file `content-change-validation.yaml` with content similar to the following:
+2. Create file `validate-param-pr.yaml` with content similar to the following:
 
 ```yaml
 name: Validate Param at Pull Request
@@ -84,7 +84,7 @@ on:
       - main
 
 jobs:
-  content-change-validation:
+  validate-param-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Validate Param at Pull Request
