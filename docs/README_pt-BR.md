@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate Param at Pull Request
-        uses: padupe/action-content-change-validation@1.1.4
+        uses: padupe/action-validate-param-pr@1.0.0
         with:
           gitHubToken: ${{ secrets.PAT_TOKEN }}
           conditionalValue: '[x] Release'
