@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/core'
 import { IGitHubRepository } from './IGitHubRepository'
-import { auth } from 'auth'
+import { auth } from '../auth/auth'
 import { setFailed } from '@actions/core'
 
 export class GitHubRepository implements IGitHubRepository {
