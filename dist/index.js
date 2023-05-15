@@ -10748,7 +10748,7 @@ var GitHubRepository = /** @class */ (function () {
                             })];
                     case 1:
                         pullRequest = _a.sent();
-                        if (!pullRequest) {
+                        if (pullRequest.status !== 200) {
                             (0, core_1.setFailed)("Error capturing Pull Request body ".concat(pullRequestNUmber));
                         }
                         console.log('RESULTADO');

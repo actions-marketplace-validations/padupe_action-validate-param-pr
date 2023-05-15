@@ -49,7 +49,7 @@ export class GitHubRepository implements IGitHubRepository {
       },
     )
 
-    if (!pullRequest) {
+    if (pullRequest.status !== 200) {
       setFailed(`Error capturing Pull Request body ${pullRequestNUmber}`)
     }
 
