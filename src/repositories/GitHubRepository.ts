@@ -53,7 +53,7 @@ export class GitHubRepository implements IGitHubRepository {
       setFailed(`Error capturing Pull Request body ${pullRequestNUmber}`)
     }
 
-    console.log(pullRequest.data.body)
+    console.log(pullRequest.data)
 
     return pullRequest.data.body as string
   }
