@@ -10537,32 +10537,6 @@ exports.auth = (0, octokit_1.createOctokitClient)((0, core_1.getInput)('gitHubTo
 
 /***/ }),
 
-/***/ 8174:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(2113), exports);
-__exportStar(__nccwpck_require__(9651), exports);
-
-
-/***/ }),
-
 /***/ 9651:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -10730,7 +10704,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GitHubRepository = void 0;
-var auth_1 = __nccwpck_require__(8174);
+var auth_1 = __nccwpck_require__(2113);
 var core_1 = __nccwpck_require__(2186);
 var GitHubRepository = /** @class */ (function () {
     function GitHubRepository() {
@@ -10784,42 +10758,6 @@ exports.GitHubRepository = GitHubRepository;
 
 /***/ }),
 
-/***/ 2181:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 3722:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(246), exports);
-__exportStar(__nccwpck_require__(2181), exports);
-
-
-/***/ }),
-
 /***/ 848:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -10865,8 +10803,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.gitHubService = void 0;
 var core_1 = __nccwpck_require__(2186);
 var validationIfConditionIsMet_1 = __nccwpck_require__(8100);
-var repositories_1 = __nccwpck_require__(3722);
-var gitHubRepository = new repositories_1.GitHubRepository();
+var GitHubRepository_1 = __nccwpck_require__(246);
+var gitHubRepository = new GitHubRepository_1.GitHubRepository();
 function gitHubService(conditionalValue, pullRequestNumber, repoName, repoOwner, valueThatMustExist) {
     return __awaiter(this, void 0, void 0, function () {
         var bodyPullRequest, validate;
